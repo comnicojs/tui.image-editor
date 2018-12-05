@@ -8,8 +8,8 @@ import consts from '../consts';
 
 const {componentNames, rejectMessages} = consts;
 const imageOption = {
-    padding: 0,
-    crossOrigin: 'Anonymous'
+    padding: 0
+    // crossOrigin: 'Anonymous'
 };
 
 /**
@@ -33,7 +33,8 @@ class ImageLoader extends Component {
     load(imageName, img) {
         let promise;
 
-        if (!imageName && !img) { // Back to the initial state, not error.
+        if (!imageName && !img) {
+            // Back to the initial state, not error.
             const canvas = this.getCanvas();
 
             canvas.backgroundImage = null;
@@ -69,15 +70,19 @@ class ImageLoader extends Component {
         return new Promise((resolve, reject) => {
             const canvas = this.getCanvas();
 
-            canvas.setBackgroundImage(img, () => {
-                const oImage = canvas.backgroundImage;
+            canvas.setBackgroundImage(
+                img,
+                () => {
+                    const oImage = canvas.backgroundImage;
 
-                if (oImage.getElement()) {
-                    resolve(oImage);
-                } else {
-                    reject(rejectMessages.loadingImageFailed);
-                }
-            }, imageOption);
+                    if (oImage.getElement()) {
+                        resolve(oImage);
+                    } else {
+                        reject(rejectMessages.loadingImageFailed);
+                    }
+                },
+                imageOption
+            );
         });
     }
 }

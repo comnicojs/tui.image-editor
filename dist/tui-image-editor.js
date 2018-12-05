@@ -15100,8 +15100,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    rejectMessages = _consts2.default.rejectMessages;
 
 	var imageOption = {
-	    padding: 0,
-	    crossOrigin: 'Anonymous'
+	    padding: 0
+	    // crossOrigin: 'Anonymous'
 	};
 
 	/**
